@@ -1,0 +1,64 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 400,
+  "title": "Co2 Emmissions Around The Globe",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ishtiaquehossain/FIT3179_homework09/main/co2_2.csv"
+  },
+  "params": [
+    {
+      "name": "Year_Above",
+      "value": 1970,
+      "bind": {
+        "input": "range",
+        "min": 1970,
+        "max": 2018,
+        "step": 5,
+        "name": "Minimum year"
+      }
+    },
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "labels": [
+          "Show All",
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "name": "Continent: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "Continent_selection == null || datum.Country == Continent_selection"
+    },
+    {"filter": "year(datum.Year) > Year_Above"}
+  ],
+  "mark": {"type": "line"},
+  "encoding": {
+    "y": {
+      "field": "AnnualCO2Emissions",
+      "type": "quantitative",
+      "title": "Confirmed Cases",
+      "aggregate": "sum"
+    },
+    "x": {"field": "Year", "type": "temporal"}
+  },
+  "config": {}
+}
