@@ -1,20 +1,129 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <h2> Oil Consumption Around The Globe</h2>
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.17.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.17.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12.2"></script>
+  <title>FIT3179 HW 5 Dashboard</title>
+  <!-- Import Vega & Vega-Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+  <!-- Import vega-embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <!-- Google font -->
+  <link href="<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap" rel="stylesheet">" rel="stylesheet">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- custom CSS -->
+  <style>
+    *{
+      font-family: 'Roboto', sans-serif;
+    }
+    h1{
+      font-weight: 800;
+    }
+     body{
+       background-color: darkblue;
+     }
+     .page{
+       width: 1155px;    
+       background-color: white;   
+       margin: auto;
+       padding: 50px;
+       padding-top: 35px;
+    }
+    .vis-container{
+      width: 100%;
+    }
+    .description h2, h1{
+      margin-top:0px;
+    }
+    .description-right {
+      padding-left: 20px;
+    }
+    .description-left{
+      padding-right: 20px;
+    }
+    .pure-g{
+      margin-bottom: 25px;
+    }
+    p{
+     font-size: 18px;
+     font-weight: 300;
+    }
+    .small-font{
+      font-size: 13px;
+      font-weight: 300;
+    }
+  </style>
 </head>
 <body>
 
-<div id="vis"></div>
+ <div class="page">
 
+   <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>HW Week 10 Visualisation Dashboard</h1>
+        <p>This visualisation contains two charts from the domain of Oil and Energy Consumption. The two visual idioms used here are, Choropleth Map & Line Chart.</p>
+      </div>
+    </div>
+  <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-4">
+          <div class="description description-left">
+            <h2>Oil Consumption Around the globe (TWh)</h2>
+            <p> This visualisation shows us the oil consumption of every country in the world with diverging set of colours and with varying luminance. As it can be seen, there are only a handful of countries with an oil consumption below 100. Majority of the countries have an oil consumption close to 1000 TWh. </p>
+          </div>
+          <div>
+            <b>What is the oil consumption of your country ?</b>
+          </div>
+        </div>
+        <div class="pure-u-3-4">
+          <div id="vis1" class="vis-container"></div>
+        </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-4">
+          <div class="description description-left">
+            <h2>Co2 Emissions Around The Globe from 1970 to 2018</h2>
+            <p> From the shown line chart, it is quite clear that the Co2 emissions have been on a steady rise. The world has seen a very short reduction is Co2 emissions few times since 1970, but there has not been a single reduction in nearly 12 years!! The reason of this dramatic increase is simply because of the fossil fuels that are being burnt around the world for energy.</p>
+          </div>
+          <div>
+            <b>Do you have any ideas on how to reduce Co2 emmissions globally for a better future ?</b>
+          </div>
+        </div>
+        <div class="pure-u-3-4">
+          <div id="vis2" class="vis-container"></div>
+        </div>
+    </div>
+ 
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font">
+        <p>A visualisation by ISHTIAQUE HOSSAIN</p>
+      </div>
+    </div>
+  
+  
+
+  </div> <!-- end page -->
+   
 <script type="text/javascript">
-  var spec = "https://raw.githubusercontent.com/ishtiaquehossain/FIT3179_homework09/main/visualization.hw9.json";
-  vegaEmbed('#vis', spec).then(function(result) {
+  var specVis1 = "https://raw.githubusercontent.com/ishtiaquehossain/FIT3179_homework09/main/visualization.hw9.json";
+  var specVis2 = "https://raw.githubusercontent.com/ishtiaquehossain/FIT3179_homework09/main/visualization.hw10.json";
+
+  vegaEmbed('#vis1', specVis1, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+   vegaEmbed('#vis2', specVis2, {"actions": false}).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
 </body>
 </html>
+Type a message...
