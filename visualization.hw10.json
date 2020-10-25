@@ -58,7 +58,11 @@
       "title": "Confirmed Cases",
       "aggregate": "sum"
     },
-    "x": {"field": "Year", "type": "temporal"}
+    "x": {"field": "Year", "type": "temporal"},
+    "tooltip": [
+      {"field": "AnnualCO2Emissions", "aggregate": "sum", "format": ".2f", "type": "quantitative", "title": "Total Emission"}, 
+      {"field": "Year", "type": "temporal", "title": "Year"}
+    ]
   },
   "config": {}
 }
